@@ -1,0 +1,36 @@
+Scenario: Vérifier la mise à l'échelle des distances entre les astres
+  Given un distances nommé <Distance> avec un diamètre de <Valeur_réelle(km)> km
+  And une longueur moyenne de tête humaine de 0.22 m
+  And une Tolérance de <Tolérance(m)>
+  When je le faire calcule
+  Then il me répond <Valeur_attendue(m)>
+  Examples:
+    | Distance                      | Valeur_réelle(km)    | Valeur_attendue(m)  | Tolérance(m)  |
+    | Soleil-Terre                  | 149600000            | 23.6                | 0.1           |
+    | Soleil-Mars                   | 227940000            | 36.0                | 0.1           |
+    | Terre-Lune                    | 384404               | 0.0607              | 0.001         |
+    | Soleil-Proxima Centauri       | 40174990000000       | 6346000             | 1000          |
+
+
+Scenario: Vérifier la mise à l'échelle du diamètre de la Terre, Mars et la Lune
+  Given un astre nommé "<Soleil>" avec un diamètre de <1392700> km
+  And une longueur moyenne de tête humaine de 0.22 m
+  And une planète nommée "Terre" avec diamètre de 12756 km
+  And une planète nommée "Mars" avec diamètre de 6779 km
+  And une planète nommée "Lune" avec diamètre de 3474 km
+  When je mets à l'échelle les diamètres de ces planètes selon la proportion Soleil-tête
+  Then le diamètre mis à l'échelle de la Terre devrait être environ 2.02 mm à 0.1 mm près
+  And le diamètre mis à l'échelle de Mars devrait être environ 1.07 mm à 0.1 mm près
+  And le diamètre mis à l'échelle de la Lune devrait être environ 0.55 mm à 0.1 mm près
+
+Feature: Échelle des diamètres et des distances des astres
+  En tant qu'utilisateur, Je souhaite connaître la diamètre des astres et leurs distances à l'échelle d'une tête humaine,
+  Afin de mieux comprendre et visualiser ces valeurs astronomiques.
+
+Scenario: Calculer la proportion entre le diamètre du Soleil et la tête humaine
+  Given un astre nommé "Soleil" avec un diamètre de 1392700 km
+  And une longueur moyenne de tête humaine de 0.22 m
+  When je calcule la proportion entre le Soleil et la tête humaine
+  Then la proportion devrait être environ 6.33e9 avec une marge de 1e7
+
+ 
