@@ -1,8 +1,8 @@
 class Planet:
-    def __init__(self, name, diameter, astre=None):
+    def __init__(self, name, diametre, astre=None):
         self.name = name
         self.astre = astre
-        self.diameter = diameter  #diametre(km)
+        self.diametre = diametre  #diametre(km)
 
     def bonjour(self):
         if self.astre:
@@ -12,4 +12,4 @@ class Planet:
 
     def scale_down(self, proportion):
         # diamètres planétaires réduits
-        return {1000000 *(self.diameter / proportion):.2}
+        return float(1000000 *(self.diametre / proportion))

@@ -6,7 +6,7 @@ class Astre:
 
     def get_proportion(self, other_length):
         #proportion
-        return self.diameter / other_length * 1e6
+        return self.diameter / other_length
 
     def scale_down(self, proportion):
         # diamètres planétaires réduits
